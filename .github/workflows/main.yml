@@ -1,4 +1,4 @@
-name: Build
+name: this copy
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -18,4 +18,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build with
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: jar
+          path: build/libs/*.jar
